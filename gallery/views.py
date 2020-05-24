@@ -5,4 +5,4 @@ from django.http  import HttpResponse
 
 # Create your views here.
 def welcome(request):
-    return HttpResponse('Welcome to the Pixels gallery')
+    return render(request, 'home.html')
