@@ -16,3 +16,5 @@ class Editor(models.Model):
 
     class Meta:
         ordering = ['first_name']
+
+class
