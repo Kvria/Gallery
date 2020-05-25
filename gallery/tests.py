@@ -2,23 +2,6 @@ from django.test import TestCase
 from .models import Editor,Image
 
 # Create your tests here.
-
-class EditorTestClass(TestCase):
-
-    # Set up method
-    def setUp(self):
-        self.james= Editor(first_name = 'James', last_name ='Muriuki', email ='james@moringaschool.com')
-
-    # Testing  instance
-    def test_instance(self):
-        self.assertTrue(isinstance(self.james,Editor))
-
-     # Testing Save Method
-    def test_save_method(self):
-        self.james.save_editor()
-        editors = Editor.objects.all()
-        self.assertTrue(len(editors) > 0)
-
 class ImageTestClass(TestCase):
     # Set up method
     def setUp(self):
@@ -42,13 +25,29 @@ class ImageTestClass(TestCase):
     def test_save_method(self):
         self.image.save_image()
         image = Image.objects.all()
-        self.assertTrue(len(image)>0)
+        self.assertTrue(len(photos)>0)
 
     # Test deleting
     def test_delete_method(self):
         self.image.delete_image()
         image = Image.objects.all()
-        self.assertTrue(len(image)<1)
+        self.assertTrue(len(photos)<1)
+
+    # Tests whether the image description is updated
+    def test_update_image_description(self):
+        
+        self.image.save_image()
+        self.image.update_image_description(self.image.id,'city')
+        new_update = Image.objects.get(name = "image")
+        self.assertEqual(new_update.description, 'city')
+
+    # Tests whether image can be searched  by location
+    def test_search_location(self):
+        
+        self.machakos.save_location()
+        self.image.save_image()
+        images = Image.filter_by_location("machakos")
+        self.assertTrue(len(photos) > 0)
  
 
 

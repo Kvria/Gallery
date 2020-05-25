@@ -18,7 +18,7 @@ class Editor(models.Model):
         ordering = ['first_name']
 
 class Image(models.Model):
-    image = models.ImageField(upload_to= 'images/')
+    photos = models.ImageField(upload_to= 'images/')
     image_id = models.IntegerField(primary_key = True)
     image_name = models.CharField(max_length = 40)
     description = models.CharField(max_length = 100)
