@@ -29,8 +29,28 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
-    class Meta:
-        ordering = ['image_name']
+    def delete_image(self):
+    Image.objects.filter(pk=self.id).delete()
+
+    @classmethod
+    def display_all_images(cls):
+        images = cls.objects.all()
+        return images
+
+     @classmethod
+    def get_image_by_id(cls,id):
+        image = cls.objects.get(id = id)
+        return image
+
+    @classmethod
+    def filter_by_location(cls,location_term):
+        locations = cls.objects.filter(location__i_location__icontains=location_term)
+        return locations
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        images = cls.objects.filter(category__i_category__icontains=search_term)
+        return images
 
 class Location(models.Model):
     location_id = models.IntegerField(primary_key = True)

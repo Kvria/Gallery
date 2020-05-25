@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Editor,Image
+from .models import Image,Location
 
 # Create your tests here.
 class ImageTestClass(TestCase):
@@ -48,6 +48,8 @@ class ImageTestClass(TestCase):
         self.image.save_image()
         images = Image.filter_by_location("machakos")
         self.assertTrue(len(photos) > 0)
+
+class LocationTestClass(TestCase):
  
 
 
