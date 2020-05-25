@@ -80,3 +80,9 @@ class LocationTestClass(TestCase):
         self.machakos.update_location(self.nairobi.id,'nairobi')
         new_update = Location.objects.get(name = "nairobi")
         self.assertEqual(new_update.name, 'nairobi')
+
+class CategoryTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.category = Category(i_category='Landscape')
+    
