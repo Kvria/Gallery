@@ -73,6 +73,15 @@ class Location(models.Model):
         return cls.objects.all()
 
 class Category(models.Model):
-    category_id = models.IntegerField(primary_key = True)
     category_name = models.CharField(max_length = 45)
 
+    def __str__(self):
+        return self.category
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        Category.objects.filter(pk=self.id).delete()
+
+ 
