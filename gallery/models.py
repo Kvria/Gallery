@@ -29,3 +29,8 @@ class Image(models.Model):
 class Location(models.Model):
     location_id = models.IntegerField(primary_key = True)
     location_name = models.CharField(max_length = 30)
+
+class Category(models.Model):
+    category_id = models.IntegerField(primary_key = True)
+    category_name = models.CharField(max_length = 45)
+    
