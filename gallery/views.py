@@ -27,3 +27,19 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'img-gallery/search.html',{"message":message})
+
+def search_location(request):
+    '''
+    Displays the various locations of the images
+    '''
+    if 'image'in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_location = Image.search_by_location(search_term)
+        message = f"{search_term}"
+
+        return render(request,'img-gallery/location.html',{"message":message,"images": searched_location})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'img-gallery/search.html',{"message":message})
+
