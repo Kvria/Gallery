@@ -26,6 +26,12 @@ class Image(models.Model):
     editor = models.ForeignKey(Editor)
     pub_date = models.DateTimeField(auto_now_add=True)
 
+    def save_image(self):
+        self.save()
+
+    class Meta:
+        ordering = ['image_name']
+
 class Location(models.Model):
     location_id = models.IntegerField(primary_key = True)
     location_name = models.CharField(max_length = 30)
