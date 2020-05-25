@@ -37,6 +37,12 @@ class ImageTestClass(TestCase):
     # testing instance
     def test_instance(self):
         self.assertTrue(isinstance(self.image,Image))
+
+    # Test Saving
+    def test_save_method(self):
+        self.image.save_image()
+        image = Image.objects.all()
+        self.assertTrue(len(image)>0)
  
 
 
