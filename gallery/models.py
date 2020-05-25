@@ -22,8 +22,8 @@ class Image(models.Model):
     image_id = models.IntegerField(primary_key = True)
     image_name = models.CharField(max_length = 40)
     description = models.CharField(max_length = 100)
-    location = models.ForeignKey('location_id', on_delete=models.CASCADE)
-    category = models.ForeignKey('category_id', on_delete=models.CASCADE)
+    location = models.ForeignKey('Location', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
 
     def save_image(self):
@@ -53,10 +53,24 @@ class Image(models.Model):
         return images
 
 class Location(models.Model):
-    location_id = models.IntegerField(primary_key = True)
     location_name = models.CharField(max_length = 30)
 
-    
+    def __str__(self):
+        return self.name
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    @classmethod
+    def update_location(cls,id,value):
+        cls.objects.filter(id = id).update(name = value)
+
+    @classmethod
+    def display_all_locations(cls):
+        return cls.objects.all()
 
 class Category(models.Model):
     category_id = models.IntegerField(primary_key = True)
