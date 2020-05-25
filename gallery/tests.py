@@ -51,6 +51,8 @@ class ImageTestClass(TestCase):
 
 class LocationTestClass(TestCase):
  
-
+    # Set up method
+    def setUp(self):
+        self.place = Location(location='Machakos')
 
         
