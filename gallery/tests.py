@@ -34,7 +34,10 @@ class ImageTestClass(TestCase):
         self.image= Image(image_name = 'city lights', image_description= 'A photo of a busy city at night.',location= self.place, category=  self.category)
         self.image.save_image()
 
-
+    # testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image,Image))
+ 
 
 
         
