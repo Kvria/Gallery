@@ -55,4 +55,6 @@ class LocationTestClass(TestCase):
     def setUp(self):
         self.place = Location(location='Machakos')
 
-        
+    # Test instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.place,Location))
