@@ -21,7 +21,11 @@ class Image(models.Model):
     image_id = models.IntegerField(primary_key = True)
     image_name = models.CharField(max_length = 40)
     description = models.CharField(max_length = 100)
-    # location = models.ForeignKey('Location', on_delete=models.CASCADE)
+    location = models.ForeignKey('location_id', on_delete=models.CASCADE)
     # category = models.ForeignKey('Manufacturer', on_delete=models.CASCADE)
     editor = models.ForeignKey(Editor)
     pub_date = models.DateTimeField(auto_now_add=True)
+
+class Location(models.Model):
+    location_id = models.IntegerField(primary_key = True)
+    location_name = models.CharField(max_length = 30)
