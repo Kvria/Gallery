@@ -70,3 +70,13 @@ class LocationTestClass(TestCase):
         self.place.delete_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations)<1)
+
+    def tearDown(self):
+        Location.objects.all().delete()
+
+    # Tests whether the location name is updated
+    def test_update_location(self):
+        self.machakos.save_location()
+        self.machakos.update_location(self.nairobi.id,'nairobi')
+        new_update = Location.objects.get(name = "nairobi")
+        self.assertEqual(new_update.name, 'nairobi')
