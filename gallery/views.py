@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http  import HttpResponse,Http404
-from .models import Image
+from .models import Image,Category,Location
 
 # Create your views here.
 def index(request):
@@ -15,7 +15,7 @@ def image(request,image_id):
 
 def search_results(request):
     '''
-    Displays the results search page
+    Displays the results search page of images in specific categories
     '''
     if 'image'in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
