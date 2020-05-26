@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="container-fluid">
+    <h1 id="home-header" class="text-center">GaLLERIA</h1>
+    <p>“We are making photographs to understand what our lives mean to us.”</p>
+
+    <div id="images">
+        <div id="image-list">
+            {% for image in images%}
+            <div class="col-xs-6 col-md-4 col-sm-6 col-lg-4">
+                <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.image.url}}','{{image.location}}','{{image.category}}')"
+                    class="image img-responsive" src="{{image.image.url}}">
+            </div>
+            {% endfor%}
+
+        </div>
+    </div>
+    <br><br>
+</div>
+
+{% endblock%}

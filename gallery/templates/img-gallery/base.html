@@ -1,4 +1,4 @@
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,12 @@
     {% else %}
     <title>PIXELS GALLERY</title>
     {% endif %}
+
     {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-  {% endblock %}
+    {% endblock %}
 </head>
 
 <body>
