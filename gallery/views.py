@@ -7,15 +7,8 @@ def index(request):
 
     title = "Pixels"
     images = Image.display_all_images()
-    locations = Location,display_all_locations()
-    return render(request, 'home.html')
-
-def image(request,image_id):
-    try:
-        image = Image.objects.get(id = image_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"img-gallery/image.html", {"image":image})
+    locations = Location.display_all_locations()
+    return render(request, "index.html", {"title": title, "images":images, "locations":locations})
 
 def search_results(request):
     '''
@@ -37,9 +30,9 @@ def search_location(request):
     Displays the various locations of the images
     '''
     if 'image'in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_location = Image.search_by_location(search_term)
-        message = f"{search_term}"
+        location_term = request.GET.get("image")
+        searched_location = Image.filter_by_location(location_term)
+        message = f"{location_term}"
 
         return render(request,'img-gallery/location.html',{"message":message,"images": searched_location})
 
