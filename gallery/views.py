@@ -4,6 +4,10 @@ from .models import Image,Category,Location
 
 # Create your views here.
 def index(request):
+
+    title = "Pixels"
+    images = Image.display_all_images()
+    locations = Location,display_all_locations()
     return render(request, 'home.html')
 
 def image(request,image_id):
