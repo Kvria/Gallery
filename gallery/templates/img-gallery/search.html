@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    {% if searched_images %}
+    <h2 class="header"> Category Search</h2>
+    <h2 class="header-alt">Found {{ searched_images|length }} image(s) of the category {{message}}</h2>
+
+    <div id="images">
+        <div id="image-list">
+            {% for image in searched_images %}
+            <div class="col-xs-6 col-md-4 col-sm-6 col-lg-4">
+                <img onclick="showModal('{{image.image_name}}','{{image.description}}','{{image.image.url}}','{{image.location}}','{{image.category}}')"
+                    class="image" src="{{image.image.url}}">
+            </div>
+            {% endfor%}
+
+        </div>
+    </div>
+        {% else %}
+        <h2 class="header-alt">Found 0 articles for the category </h2>
+        {% endif %}
+
+</div>
+{% endblock %}
