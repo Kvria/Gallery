@@ -1,34 +1,34 @@
 {% extends 'img-gallery/base.html'%}
 {% block content %}
 
-<div id="image-display">
+<div class="container" id="image-display">
         <h1><b>PIXELS GALLERY</b></h1>
         <p>"Sometimes you don't know the value of a moment until it becomes a memory." - Dr. Seuss.</p>
+
     {% for image in images%}
-        
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 hover "><img class="image img-responsive" src="{{image.photos.url}}" data-toggle="modal" data-target="#image-modal-{{image.image_id}}"></div>
         <div class="modal fade" id="image-modal-{{image.image_id}}" tabindex="-1" role="dialog"aria-labelledby="image-modal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="image-modalTitle">{{image.image_name}}</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="{{image.photos.url}}" alt="">
-                    <p><b>Description:</b> {{image.description}}</p>
-                    <p><b>Category:</b> {{image.category}}</p>
-                    <p><b>Location:</b> {{image.location}}</p>
-                </div>
-                <div class="modal-footer">
-                    <input class="form-control input-lg" type="text"
-                        value="{{image.image.url}}" id="{{image.image_id}}.url">
-                    <button class="btn btn-success btn-sm" onclick="copyLink('{{image.image_id}}.url')">Copy link</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
-                    </button>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="image-modalTitle">{{image.image_name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{image.photos.url}}" alt="">
+                        <p><b>Description:</b> {{image.description}}</p>
+                        <p><b>Category:</b> {{image.category}}</p>
+                        <p><b>Location:</b> {{image.location}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="form-control input-lg" type="text"
+                            value="{{image.image.url}}" id="{{image.image_id}}.url">
+                        <button class="btn btn-success btn-sm" onclick="copyLink('{{image.image_id}}.url')">Copy link</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endfor%}
 </div>
 <br>

@@ -1,9 +1,11 @@
-h2, p, h1{
+p, h1, h2{
     font-family: 'Kalam', cursive;
+    text-align: center;
     color: black;
 }
 body{
     background-color: #503047;
-    background-size: cover;
-    margin: 18px;
+}
+img{
+    padding: 5px;
 }
