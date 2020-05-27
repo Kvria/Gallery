@@ -1,0 +1,10 @@
+h2, p, h1{
+    font-family: 'Kalam', cursive;
+    color: black;
+}
+body{
+    background-color: #503047;
+    background-image: url(./images/bg.jpeg);
+    background-size: cover;
+    margin: 20px;
+}

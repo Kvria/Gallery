@@ -2,6 +2,40 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    category_name = models.CharField(max_length = 45)
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    def __str__(self):
+        return self.category_name
+
+class Location(models.Model):
+    location_name = models.CharField(max_length = 30)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.location_name
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    @classmethod
+    def update_location(id,value):
+        Location.objects.filter(id = id).update(name = value)
+
+    @classmethod
+    def display_all_locations(cls):
+        return cls.objects.all()
+
+
 class Image(models.Model):
     photos = models.ImageField(upload_to= 'images/')
     image_id = models.IntegerField(primary_key = True)
@@ -10,12 +44,13 @@ class Image(models.Model):
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
     def save_image(self):
         self.save()
 
     def delete_image(self):
-        Image.objects.filter(pk=self.id).delete()
+        self.delete()
 
     @classmethod
     def display_all_images(cls):
@@ -24,8 +59,8 @@ class Image(models.Model):
 
     @classmethod
     def get_image_by_id(cls,id):
-        image = cls.objects.get(id = id)
-        return image
+        images = cls.objects.get(id = id)
+        return images
 
     @classmethod
     def filter_by_location(cls,location_term):
@@ -37,36 +72,6 @@ class Image(models.Model):
         images = cls.objects.filter(category__i_category__icontains=search_term)
         return images
 
-class Location(models.Model):
-    location_name = models.CharField(max_length = 30)
 
-    def __str__(self):
-        return self.name
-
-    def save_location(self):
-        self.save()
-
-    def delete_location(self):
-        self.delete()
-
-    @classmethod
-    def update_location(cls,id,value):
-        cls.objects.filter(id = id).update(name = value)
-
-    @classmethod
-    def display_all_locations(cls):
-        return cls.objects.all()
-
-class Category(models.Model):
-    category_name = models.CharField(max_length = 45)
-
-    def __str__(self):
-        return self.category
-
-    def save_category(self):
-        self.save()
-
-    def delete_category(self):
-        Category.objects.filter(pk=self.id).delete()
 
  
