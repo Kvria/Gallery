@@ -6,7 +6,9 @@ from .models import Image,Category,Location
 def index(request):
 
     title = "Pixels"
-    images = Image.display_all_images()
+    images = Image.objects.all()
+    print(images)
+    
     locations = Location.display_all_locations()
     return render(request, "index.html", {"title": title, "images":images, "locations":locations})
 

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'img-gallery/base.html' %}
 {% block content %}
 <div class="container-fluid">
     {% if searched_images %}
@@ -9,8 +9,8 @@
         <div id="image-list">
             {% for image in searched_images %}
             <div class="col-xs-6 col-md-4 col-sm-6 col-lg-4">
-                <img onclick="showModal('{{image.image_name}}','{{image.description}}','{{image.image.url}}','{{image.location}}','{{image.category}}')"
-                    class="image" src="{{image.image.url}}">
+                <img onclick="showModal('{{image.image_name}}','{{image.description}}','{{image.photos.url}}','{{image.location}}','{{image.category}}')"
+                    class="image" src="{{image.photos.url}}">
             </div>
             {% endfor%}
 
